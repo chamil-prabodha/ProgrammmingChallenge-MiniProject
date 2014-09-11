@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Properties;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
@@ -15,6 +16,7 @@ namespace WindowsFormsApplication1
     {
         private Player a,b,CurrentPlayer;
         private int plays = 0;
+        DBConnection connection;
 
         public TicTacToe()
         {
@@ -24,7 +26,7 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             modeSelect.SelectedItem = "Human";
-            DBConnection x = new DBConnection();
+            connection = new DBConnection();
             button_Disable();
             label_PlayCount.Text = plays.ToString();
 
@@ -74,6 +76,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(0, 0) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
 
@@ -95,6 +98,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(0, 1) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` ="+CurrentPlayer.getScore().ToString()+" WHERE `PlayerName` ='"+CurrentPlayer.getName()+"'");
                     button_Disable();
                 }
                 //button2.Enabled = false;
@@ -116,6 +120,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(0, 2) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button3.Enabled = false;
@@ -136,6 +141,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(1, 0) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button4.Enabled = false;
@@ -156,6 +162,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(1, 1) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button5.Enabled = false;
@@ -176,6 +183,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(1, 2) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button6.Enabled = false;
@@ -196,6 +204,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(2, 0) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button7.Enabled = false;
@@ -215,6 +224,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(2, 1) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button8.Enabled = false;
@@ -235,6 +245,7 @@ namespace WindowsFormsApplication1
                 if (CurrentPlayer.check_Win(2, 2) == (GameStatus)1)
                 {
                     listBox_CurrPlayers.FindItemWithText(CurrentPlayer.getName()).SubItems[2].Text = CurrentPlayer.getScore().ToString();
+                    DBConnection.writeToDB("UPDATE `Players` SET `Score` =" + CurrentPlayer.getScore().ToString() + " WHERE `PlayerName` ='" + CurrentPlayer.getName() + "'");
                     button_Disable();
                 }
                 //button9.Enabled = false;
@@ -250,12 +261,7 @@ namespace WindowsFormsApplication1
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtPlayer_1.Clear();
-            txtPlayer_2.Clear();
-            listBox_CurrPlayers.Items.Clear();
-            button_Enable();
             
-            CurrentPlayer = a;
             
         }
 
@@ -320,12 +326,17 @@ namespace WindowsFormsApplication1
 
         private void btn_NewGame_Click(object sender, EventArgs e)
         {
-            button_Enable();
-            a.clearGame();
-            b.clearGame();
-            CurrentPlayer = a;
-            plays++;
-            label_PlayCount.Text = plays.ToString();
+            
+            if (a!=null &&  b!=null)
+            {
+                button_Enable();
+                a.clearGame();
+                b.clearGame();
+                CurrentPlayer = a;
+                plays++;
+                label_PlayCount.Text = plays.ToString();
+            }
+            
         }
 
         private void btn_NewRally_Click(object sender, EventArgs e)
@@ -347,23 +358,68 @@ namespace WindowsFormsApplication1
         {
             if (listBox_CurrPlayers.Items.Count < 2 && txtPlayer_1.Text != "")
             {
+                string addPlayer = "INSERT into `players` VALUES('"+txtPlayer_1.Text+"','0')";
+                if (DBConnection.writeToDB(addPlayer))
+                {
+                    a = new Player(1, txtPlayer_1.Text);
+                    ListViewItem player1 = new ListViewItem(txtPlayer_1.Text);
+                    player1.SubItems.Add("X");
+                    player1.SubItems.Add("0");
+                    listBox_CurrPlayers.Items.Add(player1);
+
+                    CurrentPlayer = a;
+                    add_Player1.Enabled = false;
+
+                    if (listBox_CurrPlayers.Items.Count == 2)
+                    {
+                        button_Enable();
+                        plays = 1;
+                        label_PlayCount.Text = plays.ToString();
+                    }
+                }
+
+                else
+                {
+                    MeBox message = new MeBox();
+                    if (message.ShowDialog() == DialogResult.OK)
+                    {
+                        string getScore = "SELECT score FROM `Players` WHERE `PlayerName` ='" + txtPlayer_1.Text+"'";
+                        
+                        MySqlDataReader reader = DBConnection.readFromDB(getScore);
+
+                        a = new Player(1, txtPlayer_1.Text);
+                        ListViewItem player1 = new ListViewItem(txtPlayer_1.Text);
+
+                        string score = "0";
+                        
+                        if(reader.Read())
+                        {
+                            score = reader.GetInt32(0).ToString();
+                            a.setScore(Int32.Parse(score));
+                        }
+
+                        player1.SubItems.Add("X");
+                        player1.SubItems.Add(score);
+                        listBox_CurrPlayers.Items.Add(player1);
+
+                        CurrentPlayer = a;
+                        add_Player1.Enabled = false;
+
+                        if (listBox_CurrPlayers.Items.Count == 2)
+                        {
+                            button_Enable();
+                            plays = 1;
+                            label_PlayCount.Text = plays.ToString();
+                        }
+                    }
+
+                    
+                }
+
                 
-                a = new Player(1, txtPlayer_1.Text);
-                ListViewItem player1 = new ListViewItem(txtPlayer_1.Text);
-                player1.SubItems.Add("X");
-                player1.SubItems.Add("0");
-                listBox_CurrPlayers.Items.Add(player1);
             }
 
-            CurrentPlayer = a;
-            add_Player1.Enabled = false;
-
-            if (listBox_CurrPlayers.Items.Count == 2)
-            {
-                button_Enable();
-                plays = 1;
-                label_PlayCount.Text = plays.ToString();
-            }
+            
             
         }
 
@@ -371,23 +427,68 @@ namespace WindowsFormsApplication1
         {
             if (listBox_CurrPlayers.Items.Count < 2 && txtPlayer_2.Text != "")
             {
-                b = new Player(2, txtPlayer_2.Text);
-                ListViewItem player2 = new ListViewItem(txtPlayer_2.Text);
-                player2.SubItems.Add("O");
-                player2.SubItems.Add("0");
-                listBox_CurrPlayers.Items.Add(player2);
+                string addPlayer = "INSERT into `players` VALUES('" + txtPlayer_2.Text + "','0')";
+                if (DBConnection.writeToDB(addPlayer))
+                {
+                    b = new Player(2, txtPlayer_2.Text);
+                    ListViewItem player2 = new ListViewItem(txtPlayer_2.Text);
+                    player2.SubItems.Add("O");
+                    player2.SubItems.Add("0");
+                    listBox_CurrPlayers.Items.Add(player2);
+
+                    CurrentPlayer = a;
+                    add_Player2.Enabled = false;
+
+                    if (listBox_CurrPlayers.Items.Count == 2)
+                    {
+                        button_Enable();
+                        plays = 1;
+                        label_PlayCount.Text = plays.ToString();
+                    }
+                }
+
+                else {
+
+                    MeBox message = new MeBox();
+                    if (message.ShowDialog() == DialogResult.OK)
+                    {
+                        string getScore = "SELECT Score FROM Players WHERE PlayerName ='" + txtPlayer_2.Text + "'";
+                        
+                        MySqlDataReader reader = DBConnection.readFromDB(getScore);
+                        b = new Player(2, txtPlayer_2.Text);
+                        
+                        ListViewItem player2 = new ListViewItem(txtPlayer_2.Text);
+                        
+                        string score = "0";
+
+                        if (reader.Read())
+                        {
+                            score = reader.GetInt32(0).ToString();
+                            b.setScore(Int32.Parse(score));
+                        }
+
+                        player2.SubItems.Add("O");
+                        player2.SubItems.Add(score);
+                        listBox_CurrPlayers.Items.Add(player2);
+
+                        CurrentPlayer = a;
+                        add_Player2.Enabled = false;
+
+                        if (listBox_CurrPlayers.Items.Count == 2)
+                        {
+                            button_Enable();
+                            plays = 1;
+                            label_PlayCount.Text = plays.ToString();
+                        }
+                    }
+                    
+                }
             }
 
-            CurrentPlayer = a;
-            add_Player2.Enabled = false;
-
-            if (listBox_CurrPlayers.Items.Count == 2)
-            {
-                button_Enable();
-                plays = 1;
-                label_PlayCount.Text = plays.ToString();
-            }
+            
         }
+
+        
         
     }
 }

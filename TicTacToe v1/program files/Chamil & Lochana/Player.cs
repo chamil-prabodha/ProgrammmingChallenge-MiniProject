@@ -109,6 +109,11 @@ namespace WindowsFormsApplication1
             return playerScore;
         }
 
+        public void setScore(int score)
+        {
+            this.playerScore = score;
+        }
+
         public string getName() {
             return PlayerName;
         }

@@ -50,14 +50,14 @@
             this.txtPlayer_2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label_PlayCount = new System.Windows.Forms.Label();
+            this.label_Plays = new System.Windows.Forms.Label();
             this.add_Player2 = new System.Windows.Forms.Button();
             this.add_Player1 = new System.Windows.Forms.Button();
             this.listBox_CurrPlayers = new System.Windows.Forms.ListView();
             this.Player = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Sign = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Score = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label_Plays = new System.Windows.Forms.Label();
-            this.label_PlayCount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -289,6 +289,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Controls";
             // 
+            // label_PlayCount
+            // 
+            this.label_PlayCount.AutoSize = true;
+            this.label_PlayCount.Location = new System.Drawing.Point(48, 220);
+            this.label_PlayCount.Name = "label_PlayCount";
+            this.label_PlayCount.Size = new System.Drawing.Size(13, 13);
+            this.label_PlayCount.TabIndex = 24;
+            this.label_PlayCount.Text = "0";
+            // 
+            // label_Plays
+            // 
+            this.label_Plays.AutoSize = true;
+            this.label_Plays.Location = new System.Drawing.Point(4, 220);
+            this.label_Plays.Name = "label_Plays";
+            this.label_Plays.Size = new System.Drawing.Size(38, 13);
+            this.label_Plays.TabIndex = 23;
+            this.label_Plays.Text = "Plays :";
+            // 
             // add_Player2
             // 
             this.add_Player2.Location = new System.Drawing.Point(113, 150);
@@ -336,24 +354,6 @@
             // 
             this.Score.Text = "Score";
             this.Score.Width = 43;
-            // 
-            // label_Plays
-            // 
-            this.label_Plays.AutoSize = true;
-            this.label_Plays.Location = new System.Drawing.Point(4, 220);
-            this.label_Plays.Name = "label_Plays";
-            this.label_Plays.Size = new System.Drawing.Size(38, 13);
-            this.label_Plays.TabIndex = 23;
-            this.label_Plays.Text = "Plays :";
-            // 
-            // label_PlayCount
-            // 
-            this.label_PlayCount.AutoSize = true;
-            this.label_PlayCount.Location = new System.Drawing.Point(48, 220);
-            this.label_PlayCount.Name = "label_PlayCount";
-            this.label_PlayCount.Size = new System.Drawing.Size(13, 13);
-            this.label_PlayCount.TabIndex = 24;
-            this.label_PlayCount.Text = "0";
             // 
             // TicTacToe
             // 
