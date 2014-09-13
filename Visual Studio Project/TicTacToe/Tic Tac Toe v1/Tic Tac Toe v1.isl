@@ -1181,7 +1181,7 @@
 		<col key="yes" def="S72">Parent</col>
 		<col key="yes" def="S255">Path</col>
 		<col def="I2">Depth</col>
-		<row><td>NewSignature11</td><td></td><td>mysql</td><td>0</td></row>
+		<row><td>NewSignature11</td><td></td><td>mysql</td><td>4</td></row>
 	</table>
 
 	<table name="DuplicateFile">
@@ -2655,7 +2655,7 @@
 		<row><td>COMPANY_NAME</td><td>1033</td><td>Chamil &amp; Lochana</td><td>0</td><td/><td>1285708402</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MYSQL</td><td>1033</td><td>MySql is not Installed. Please install MySql to proceed.</td><td>0</td><td/><td>1822567407</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MYSQL</td><td>1033</td><td>MySql is not Installed. Please install MySql to proceed.</td><td>0</td><td/><td>1822586159</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
