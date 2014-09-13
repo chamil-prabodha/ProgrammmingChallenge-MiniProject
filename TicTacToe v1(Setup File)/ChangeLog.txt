@@ -1,0 +1,2 @@
+Connected database to the app :D
+Added sample images to buttons. Configured mysql requirement at installation.
