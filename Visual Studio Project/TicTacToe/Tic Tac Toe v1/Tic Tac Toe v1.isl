@@ -1181,7 +1181,7 @@
 		<col key="yes" def="S72">Parent</col>
 		<col key="yes" def="S255">Path</col>
 		<col def="I2">Depth</col>
-		<row><td>NewSignature11</td><td></td><td>mysql</td><td>4</td></row>
+		<row><td>NewSignature11</td><td></td><td>mysql</td><td>7</td></row>
 	</table>
 
 	<table name="DuplicateFile">
@@ -2652,10 +2652,10 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Chamil &amp; Lochana</td><td>0</td><td/><td>1285708402</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Chamil &amp; Lochana</td><td>0</td><td/><td>1822566095</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MYSQL</td><td>1033</td><td>MySql is not Installed. Please install MySql to proceed.</td><td>0</td><td/><td>1822586159</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MYSQL</td><td>1033</td><td>MySql is not Installed. Please install MySql to proceed.</td><td>0</td><td/><td>1822605103</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
@@ -3756,8 +3756,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1285732946</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1285734994</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>www.Chamil&amp;Loch.com</td><td>0</td><td/><td>1285714930</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>Chamil &amp; Lochana</td><td>0</td><td/><td>1285708402</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Chamil&amp;Lochana.com</td><td>0</td><td/><td>1822566095</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>Chamil &amp; Lochana</td><td>0</td><td/><td>1822566095</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1419922944</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1419954273</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1285732946</td></row>
